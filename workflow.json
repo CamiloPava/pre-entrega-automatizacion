@@ -301,6 +301,7 @@
             "version": 1,
             "parameters": {},
             "mapper": {
+                "scope": "roundtrip",
                 "variables": [
                     {
                         "name": "PrecioUSD",
@@ -320,14 +321,13 @@
                     },
                     {
                         "name": "Alertando ahora",
-                        "value": "{{abs(2.data.priceChangePercent) >= 5"}}"
+                        "value": "{{abs(2.data.priceChangePercent) >= \"5\n\"}}"
                     },
                     {
                         "name": "Cambio_abs",
                         "value": "{{abs(2.data.priceChangePercent)}}"
                     }
-                ],
-                "scope": "roundtrip"
+                ]
             },
             "metadata": {
                 "designer": {
@@ -336,6 +336,9 @@
                 },
                 "restore": {
                     "expect": {
+                        "scope": {
+                            "label": "One cycle"
+                        },
                         "variables": {
                             "items": [
                                 null,
@@ -345,30 +348,27 @@
                                 null,
                                 null
                             ]
-                        },
-                        "scope": {
-                            "label": "One cycle"
                         }
                     }
                 },
                 "expect": [
                     {
                         "name": "variables",
-                        "type": "array",
-                        "label": "Variables",
                         "spec": [
                             {
                                 "name": "name",
-                                "label": "Variable name",
                                 "type": "text",
+                                "label": "Variable name",
                                 "required": true
                             },
                             {
                                 "name": "value",
-                                "label": "Variable value",
-                                "type": "any"
+                                "type": "any",
+                                "label": "Variable value"
                             }
-                        ]
+                        ],
+                        "type": "array",
+                        "label": "Variables"
                     },
                     {
                         "name": "scope",
@@ -386,33 +386,33 @@
                 "interface": [
                     {
                         "name": "PrecioUSD",
-                        "label": "PrecioUSD",
-                        "type": "any"
+                        "type": "any",
+                        "label": "PrecioUSD"
                     },
                     {
                         "name": "Cambio-Real",
-                        "label": "Cambio-Real",
-                        "type": "any"
+                        "type": "any",
+                        "label": "Cambio-Real"
                     },
                     {
                         "name": "Cambio-Absoluto",
-                        "label": "Cambio-Absoluto",
-                        "type": "any"
+                        "type": "any",
+                        "label": "Cambio-Absoluto"
                     },
                     {
                         "name": "Fecha",
-                        "label": "Fecha",
-                        "type": "any"
+                        "type": "any",
+                        "label": "Fecha"
                     },
                     {
                         "name": "Alertando ahora",
-                        "label": "Alertando ahora",
-                        "type": "any"
+                        "type": "any",
+                        "label": "Alertando ahora"
                     },
                     {
                         "name": "Cambio_abs",
-                        "label": "Cambio_abs",
-                        "type": "any"
+                        "type": "any",
+                        "label": "Cambio_abs"
                     }
                 ]
             }
@@ -526,27 +526,26 @@
                                     [
                                         {
                                             "a": "{{3.`Alertando ahora`}}",
-                                            "o": "text:equal",
-                                            "b": "{{true}}"
+                                            "b": "{{true}}",
+                                            "o": "text:equal"
                                         },
                                         {
                                             "a": "{{18.Alertando}}",
-                                            "o": "text:equal",
-                                            "b": "{{null | false}}"
+                                            "b": "{{null | false}}",
+                                            "o": "text:equal"
                                         }
                                     ]
                                 ]
                             },
                             "mapper": {
                                 "to": [
-                                    "DESTINATARIO@ejemplo.com"
-
+                                    "camilop.evideo@gmail.com"
                                 ],
-                                "subject": "🚨 Alerta BTC - cambio 24h: {{round(3.`Cambio-Real`)}}%",
+                                "subject": "🚨 Alerta BTC: cambio 24h: {{round(3.`Cambio-Real`)}}%",
                                 "bodyType": "collection",
                                 "contents": [
                                     {
-                                        "text": "Alerta detectada (umbral: 5%)\n\n• Precio BTC (USD): ${{3.PrecioUSD}}\n• Cambio 24h: {{round(3.`Cambio-Real`)}}%\n\nHora: {{now}}\n",
+                                        "text": "Alerta detectada (umbral: 3%)\n\n• Precio BTC (USD): ${{3.PrecioUSD}}\n• Cambio 24h: {{round(3.`Cambio-Real`)}}%\n\nHora: {{now}}\n",
                                         "image": {}
                                     }
                                 ]
@@ -598,7 +597,8 @@
                                                 "scoped": "true",
                                                 "connection": "google-email"
                                             },
-                                            "label": "My Gmail connection (EMAIL_REDACTADO)"                                        }
+                                            "label": "My Gmail connection (camilop.evideo@gmail.com)"
+                                        }
                                     }
                                 },
                                 "parameters": [
@@ -778,20 +778,20 @@
                                 "__IMTCONN__": 6966958
                             },
                             "mapper": {
-                                "mode": "select",
-                                "insertUnformatted": false,
-                                "valueInputOption": "USER_ENTERED",
-                                "insertDataOption": "INSERT_ROWS",
                                 "from": "drive",
-                                "spreadsheetId": "INGRESAR_ID_SPREADSHEET",
-                                "sheetId": "Oportunidades de Compra-Venta",
-                                "includesHeaders": true,
+                                "mode": "select",
                                 "values": {
                                     "0": "{{now}}",
                                     "1": "{{3.PrecioUSD}}",
                                     "2": "{{3.`Cambio-Real`}}",
                                     "3": "{{3.`Cambio-Absoluto`}}"
-                                }
+                                },
+                                "sheetId": "Oportunidades de Compra-Venta",
+                                "spreadsheetId": "/1HuYxDM1Yv1Dy_svzG6_qmxK2ek92CjGQ/1hwO-UG87P7hacuzHrBhqKb6H-Fi_ZhD-A2MRP0tNhjM",
+                                "includesHeaders": true,
+                                "insertDataOption": "INSERT_ROWS",
+                                "valueInputOption": "USER_ENTERED",
+                                "insertUnformatted": false
                             },
                             "metadata": {
                                 "designer": {
@@ -799,32 +799,15 @@
                                     "y": -298
                                 },
                                 "restore": {
-                                    "parameters": {
-                                        "__IMTCONN__": {
-                                            "label": "My Google connection (EMAIL_REDACTADO)",
-                                            "data": {
-                                                "scoped": "true",
-                                                "connection": "google"
-                                            }
-                                        }
-                                    },
                                     "expect": {
+                                        "from": {
+                                            "label": "My Drive"
+                                        },
                                         "mode": {
                                             "label": "Search by path"
                                         },
-                                        "insertUnformatted": {
-                                            "mode": "chose"
-                                        },
-                                        "valueInputOption": {
-                                            "mode": "chose",
-                                            "label": "User entered"
-                                        },
-                                        "insertDataOption": {
-                                            "mode": "chose",
-                                            "label": "Insert rows"
-                                        },
-                                        "from": {
-                                            "label": "My Drive"
+                                        "sheetId": {
+                                            "label": "Oportunidades de Compra-Venta"
                                         },
                                         "spreadsheetId": {
                                             "path": [
@@ -832,10 +815,8 @@
                                                 "Precio de BTC"
                                             ]
                                         },
-                                        "sheetId": {
-                                            "label": "Oportunidades de Compra-Venta"
-                                        },
                                         "includesHeaders": {
+                                            "label": "Yes",
                                             "nested": [
                                                 {
                                                     "name": "values",
@@ -974,8 +955,27 @@
                                                     "type": "collection",
                                                     "label": "Values"
                                                 }
-                                            ],
-                                            "label": "Yes"
+                                            ]
+                                        },
+                                        "insertDataOption": {
+                                            "mode": "chose",
+                                            "label": "Insert rows"
+                                        },
+                                        "valueInputOption": {
+                                            "mode": "chose",
+                                            "label": "User entered"
+                                        },
+                                        "insertUnformatted": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "google"
+                                            },
+                                            "label": "My Google connection (camilop.evideo@gmail.com)"
                                         }
                                     }
                                 },
@@ -1068,8 +1068,6 @@
                                     },
                                     {
                                         "name": "values",
-                                        "type": "collection",
-                                        "label": "Values",
                                         "spec": [
                                             {
                                                 "name": "0",
@@ -1201,7 +1199,9 @@
                                                 "type": "text",
                                                 "label": "(Z)"
                                             }
-                                        ]
+                                        ],
+                                        "type": "collection",
+                                        "label": "Values"
                                     }
                                 ]
                             }
@@ -1309,20 +1309,20 @@
                                 "__IMTCONN__": 6966958
                             },
                             "mapper": {
-                                "mode": "select",
-                                "insertUnformatted": false,
-                                "valueInputOption": "USER_ENTERED",
-                                "insertDataOption": "INSERT_ROWS",
                                 "from": "drive",
-                                "spreadsheetId": "Ingresar_ID_Spreadsheet",
-                                "sheetId": "Registro Regular",
-                                "includesHeaders": true,
+                                "mode": "select",
                                 "values": {
                                     "0": "{{now}}",
                                     "1": "{{3.PrecioUSD}}",
                                     "2": "{{3.`Cambio-Real`}}",
                                     "3": "{{3.`Cambio-Absoluto`}}"
-                                }
+                                },
+                                "sheetId": "Registro Regular",
+                                "spreadsheetId": "/1HuYxDM1Yv1Dy_svzG6_qmxK2ek92CjGQ/1hwO-UG87P7hacuzHrBhqKb6H-Fi_ZhD-A2MRP0tNhjM",
+                                "includesHeaders": true,
+                                "insertDataOption": "INSERT_ROWS",
+                                "valueInputOption": "USER_ENTERED",
+                                "insertUnformatted": false
                             },
                             "metadata": {
                                 "designer": {
@@ -1330,32 +1330,15 @@
                                     "y": 248
                                 },
                                 "restore": {
-                                    "parameters": {
-                                        "__IMTCONN__": {
-                                            "label": "My Google connection (EMAIL_REDACTADO)",
-                                            "data": {
-                                                "scoped": "true",
-                                                "connection": "google"
-                                            }
-                                        }
-                                    },
                                     "expect": {
+                                        "from": {
+                                            "label": "My Drive"
+                                        },
                                         "mode": {
                                             "label": "Search by path"
                                         },
-                                        "insertUnformatted": {
-                                            "mode": "chose"
-                                        },
-                                        "valueInputOption": {
-                                            "mode": "chose",
-                                            "label": "User entered"
-                                        },
-                                        "insertDataOption": {
-                                            "mode": "chose",
-                                            "label": "Insert rows"
-                                        },
-                                        "from": {
-                                            "label": "My Drive"
+                                        "sheetId": {
+                                            "label": "Registro Regular"
                                         },
                                         "spreadsheetId": {
                                             "path": [
@@ -1363,10 +1346,8 @@
                                                 "Precio de BTC"
                                             ]
                                         },
-                                        "sheetId": {
-                                            "label": "Registro Regular"
-                                        },
                                         "includesHeaders": {
+                                            "label": "Yes",
                                             "nested": [
                                                 {
                                                     "name": "values",
@@ -1505,8 +1486,27 @@
                                                     "type": "collection",
                                                     "label": "Values"
                                                 }
-                                            ],
-                                            "label": "Yes"
+                                            ]
+                                        },
+                                        "insertDataOption": {
+                                            "mode": "chose",
+                                            "label": "Insert rows"
+                                        },
+                                        "valueInputOption": {
+                                            "mode": "chose",
+                                            "label": "User entered"
+                                        },
+                                        "insertUnformatted": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "google"
+                                            },
+                                            "label": "My Google connection (camilop.evideo@gmail.com)"
                                         }
                                     }
                                 },
@@ -1599,8 +1599,6 @@
                                     },
                                     {
                                         "name": "values",
-                                        "type": "collection",
-                                        "label": "Values",
                                         "spec": [
                                             {
                                                 "name": "0",
@@ -1732,7 +1730,9 @@
                                                 "type": "text",
                                                 "label": "(Z)"
                                             }
-                                        ]
+                                        ],
+                                        "type": "collection",
+                                        "label": "Values"
                                     }
                                 ]
                             }
@@ -1750,18 +1750,18 @@
                                     [
                                         {
                                             "a": "{{3.`Alertando ahora`}}",
-                                            "o": "text:equal",
-                                            "b": "{{false}}"
+                                            "b": "{{false}}",
+                                            "o": "text:equal"
                                         },
                                         {
                                             "a": "{{18.Alertando = null}}",
-                                            "o": "text:equal",
-                                            "b": "{{false}}"
+                                            "b": "{{false}}",
+                                            "o": "text:equal"
                                         },
                                         {
                                             "a": "{{18.Alertando}}",
-                                            "o": "text:equal",
-                                            "b": "{{true}}"
+                                            "b": "{{true}}",
+                                            "o": "text:equal"
                                         }
                                     ]
                                 ]

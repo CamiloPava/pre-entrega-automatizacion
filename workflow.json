@@ -320,7 +320,7 @@
                     },
                     {
                         "name": "Alertando ahora",
-                        "value": "{{abs(2.data.priceChangePercent) >= \"5\n\"}}"
+                        "value": "{{abs(2.data.priceChangePercent) >= 5"}}"
                     },
                     {
                         "name": "Cambio_abs",
@@ -539,13 +539,14 @@
                             },
                             "mapper": {
                                 "to": [
-                                    "camilop.evideo@gmail.com"
+                                    "DESTINATARIO@ejemplo.com"
+
                                 ],
-                                "subject": "🚨 Alerta BTC: cambio 24h: {{round(3.`Cambio-Real`)}}%",
+                                "subject": "🚨 Alerta BTC - cambio 24h: {{round(3.`Cambio-Real`)}}%",
                                 "bodyType": "collection",
                                 "contents": [
                                     {
-                                        "text": "Alerta detectada (umbral: 3%)\n\n• Precio BTC (USD): ${{3.PrecioUSD}}\n• Cambio 24h: {{round(3.`Cambio-Real`)}}%\n\nHora: {{now}}\n",
+                                        "text": "Alerta detectada (umbral: 5%)\n\n• Precio BTC (USD): ${{3.PrecioUSD}}\n• Cambio 24h: {{round(3.`Cambio-Real`)}}%\n\nHora: {{now}}\n",
                                         "image": {}
                                     }
                                 ]
@@ -597,8 +598,7 @@
                                                 "scoped": "true",
                                                 "connection": "google-email"
                                             },
-                                            "label": "My Gmail connection (camilop.evideo@gmail.com)"
-                                        }
+                                            "label": "My Gmail connection (EMAIL_REDACTADO)"                                        }
                                     }
                                 },
                                 "parameters": [
@@ -783,7 +783,7 @@
                                 "valueInputOption": "USER_ENTERED",
                                 "insertDataOption": "INSERT_ROWS",
                                 "from": "drive",
-                                "spreadsheetId": "/1HuYxDM1Yv1Dy_svzG6_qmxK2ek92CjGQ/1hwO-UG87P7hacuzHrBhqKb6H-Fi_ZhD-A2MRP0tNhjM",
+                                "spreadsheetId": "INGRESAR_ID_SPREADSHEET",
                                 "sheetId": "Oportunidades de Compra-Venta",
                                 "includesHeaders": true,
                                 "values": {
@@ -801,7 +801,7 @@
                                 "restore": {
                                     "parameters": {
                                         "__IMTCONN__": {
-                                            "label": "My Google connection (camilop.evideo@gmail.com)",
+                                            "label": "My Google connection (EMAIL_REDACTADO)",
                                             "data": {
                                                 "scoped": "true",
                                                 "connection": "google"
@@ -1314,7 +1314,7 @@
                                 "valueInputOption": "USER_ENTERED",
                                 "insertDataOption": "INSERT_ROWS",
                                 "from": "drive",
-                                "spreadsheetId": "/1HuYxDM1Yv1Dy_svzG6_qmxK2ek92CjGQ/1hwO-UG87P7hacuzHrBhqKb6H-Fi_ZhD-A2MRP0tNhjM",
+                                "spreadsheetId": "Ingresar_ID_Spreadsheet",
                                 "sheetId": "Registro Regular",
                                 "includesHeaders": true,
                                 "values": {
@@ -1332,7 +1332,7 @@
                                 "restore": {
                                     "parameters": {
                                         "__IMTCONN__": {
-                                            "label": "My Google connection (camilop.evideo@gmail.com)",
+                                            "label": "My Google connection (EMAIL_REDACTADO)",
                                             "data": {
                                                 "scoped": "true",
                                                 "connection": "google"

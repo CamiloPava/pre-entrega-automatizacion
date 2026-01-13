@@ -539,7 +539,7 @@
                             },
                             "mapper": {
                                 "to": [
-                                    "destinario@gmail.com"
+                                    "destinatario@gmail.com"
                                 ],
                                 "subject": "🚨 Alerta BTC: cambio 24h: {{round(3.`Cambio-Real`)}}%",
                                 "bodyType": "collection",

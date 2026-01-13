@@ -321,7 +321,7 @@
                     },
                     {
                         "name": "Alertando ahora",
-                        "value": "{{abs(2.data.priceChangePercent) >= \"5\n\"}}"
+                        "value": "{{abs(2.data.priceChangePercent) >= 5"}}"
                     },
                     {
                         "name": "Cambio_abs",
@@ -539,7 +539,7 @@
                             },
                             "mapper": {
                                 "to": [
-                                    "camilop.evideo@gmail.com"
+                                    "destinario@gmail.com"
                                 ],
                                 "subject": "🚨 Alerta BTC: cambio 24h: {{round(3.`Cambio-Real`)}}%",
                                 "bodyType": "collection",
@@ -597,7 +597,7 @@
                                                 "scoped": "true",
                                                 "connection": "google-email"
                                             },
-                                            "label": "My Gmail connection (camilop.evideo@gmail.com)"
+                                            "label": "My Gmail connection (destinatario@gmail.com)"
                                         }
                                     }
                                 },
@@ -787,7 +787,7 @@
                                     "3": "{{3.`Cambio-Absoluto`}}"
                                 },
                                 "sheetId": "Oportunidades de Compra-Venta",
-                                "spreadsheetId": "/1HuYxDM1Yv1Dy_svzG6_qmxK2ek92CjGQ/1hwO-UG87P7hacuzHrBhqKb6H-Fi_ZhD-A2MRP0tNhjM",
+                                "spreadsheetId": "id_spreedsheat",
                                 "includesHeaders": true,
                                 "insertDataOption": "INSERT_ROWS",
                                 "valueInputOption": "USER_ENTERED",
@@ -975,7 +975,7 @@
                                                 "scoped": "true",
                                                 "connection": "google"
                                             },
-                                            "label": "My Google connection (camilop.evideo@gmail.com)"
+                                            "label": "My Google connection (destinatario@gmail.com)"
                                         }
                                     }
                                 },
@@ -1318,7 +1318,7 @@
                                     "3": "{{3.`Cambio-Absoluto`}}"
                                 },
                                 "sheetId": "Registro Regular",
-                                "spreadsheetId": "/1HuYxDM1Yv1Dy_svzG6_qmxK2ek92CjGQ/1hwO-UG87P7hacuzHrBhqKb6H-Fi_ZhD-A2MRP0tNhjM",
+                                "spreadsheetId": "id_spreadsheet",
                                 "includesHeaders": true,
                                 "insertDataOption": "INSERT_ROWS",
                                 "valueInputOption": "USER_ENTERED",
@@ -1506,7 +1506,7 @@
                                                 "scoped": "true",
                                                 "connection": "google"
                                             },
-                                            "label": "My Google connection (camilop.evideo@gmail.com)"
+                                            "label": "My Google connection (destinatario@gmail.com)"
                                         }
                                     }
                                 },
